@@ -8,13 +8,13 @@
 <title>404</title>
 <meta name="title" content="404 Page not found" />
 <meta name="description" content="The home of content for João Cachada, Senior Software Engineer and writer." />
-<meta name="keywords" content="blog,debutnovel,development,fiction,journaling,reading,writing," />
+<meta name="keywords" content="debutnovel,development,fiction,journaling,reading,weblog,writing," />
 
 
 <meta property="og:title" content="404 Page not found" />
 <meta property="og:description" content="The home of content for João Cachada, Senior Software Engineer and writer." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://jcachada.dev/404.html" /><meta property="og:image" content="https://jcachada.dev/images/share.png"/><meta property="og:site_name" content="🌲 Something blooms - a bare blog." />
+<meta property="og:url" content="https://jcachada.dev/404.html" /><meta property="og:image" content="https://jcachada.dev/images/share.png"/><meta property="og:site_name" content="João Cachada&#39;s website" />
 
 
 
@@ -157,6 +157,50 @@
     color: #8b6fcb;
   }
 
+  @media (prefers-color-scheme: light) {
+    body {
+      background-color: #202b38;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
   @media (prefers-color-scheme: dark) {
     body {
       background-color: #202b38;
@@ -201,18 +245,47 @@
     }
   }
 
-</style>
+  summary.clickable-header.big-top-pull {
+    display: inline;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: -100px;
+    margin-top: -20px;
+  }
 
+  summary.clickable-header.small-top-pull {
+    display: inline;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: -100px;
+    margin-top: -5px;
+  }
+
+  .clickable-header h4::before {
+    content: "▶";
+    margin-right: 5px;
+  }
+
+  details[open] .clickable-header h4::before {
+    content: "▼";
+  }
+</style>
 </head>
 
 <body>
   <header><a href="/" class="title">
-  <h2>🌲 Something blooms - a bare blog.</h2>
+  <h2>joão&#39;s website 🐟</h2>
 </a>
-<nav><a href="/">Home</a>
+<nav><a href="/">Home & About</a>
 
 
-<a href="/blog">Blog</a>
+<a href="/weblog">Weblog</a>
+
+
+<a href="/not-a-product">Not a Product</a>
+
+
+<a href="/say-hi">Say Hi</a>
 </nav>
 </header>
   <main>
@@ -220,10 +293,7 @@
 <h2>ʕノ•ᴥ•ʔノ ︵ ┻━┻</h2>
 
   </main>
-  <footer><form accept-charset="UTF-8" action="https://getform.io/f/a07a2abc-9977-4eb1-98d4-cdb8483ae7f1" method="POST">
-    <input type="email" name="email" placeholder="e-mail">
-    <button type="submit">Get notified when I post.</button>
-</form></footer>
+  <footer></footer>
 
     
 </body>
