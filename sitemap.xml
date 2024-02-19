@@ -3,15 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jcachada.dev/</loc>
-    <lastmod>2023-01-07T18:45:18+00:00</lastmod>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/2023-reading-list/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/fiction/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/reading/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/weblog/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jcachada.dev/weblog/beta-reading-signup/</loc>
     <lastmod>2023-01-07T18:45:18+00:00</lastmod>
   </url><url>
     <loc>https://jcachada.dev/weblog/debutnovel/</loc>
-    <lastmod>2023-01-07T18:45:18+00:00</lastmod>
-  </url><url>
-    <loc>https://jcachada.dev/weblog/</loc>
     <lastmod>2023-01-07T18:45:18+00:00</lastmod>
   </url><url>
     <loc>https://jcachada.dev/weblog/writing/</loc>
@@ -27,15 +40,6 @@
     <lastmod>2023-01-06T00:26:01+00:00</lastmod>
   </url><url>
     <loc>https://jcachada.dev/weblog/2022-reading-list/</loc>
-    <lastmod>2022-12-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jcachada.dev/weblog/fiction/</loc>
-    <lastmod>2022-12-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jcachada.dev/weblog/reading/</loc>
-    <lastmod>2022-12-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jcachada.dev/weblog/weblog/</loc>
     <lastmod>2022-12-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jcachada.dev/weblog/blog/</loc>
