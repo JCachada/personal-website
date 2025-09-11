@@ -10,10 +10,17 @@
     <lastBuildDate>Thu, 07 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jcachada.dev/weblog/llm/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>You Don&#39;t Own My Brain - The Problem With AI FUD</title>
-      <link>https://jcachada.dev/weblog/you-wont-be-left-behind-the-problem-with-ai-fud/</link>
+      <title>Building a Complete Android App &#43; Backend With Claude</title>
+      <link>https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/</link>
       <pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://jcachada.dev/weblog/you-wont-be-left-behind-the-problem-with-ai-fud/</guid>
+      <guid>https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>You Don&#39;t Own My Brain - The Problem With AI FUD</title>
+      <link>https://jcachada.dev/weblog/you-dont-own-my-brain-the-problem-with-ai-fud/</link>
+      <pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://jcachada.dev/weblog/you-dont-own-my-brain-the-problem-with-ai-fud/</guid>
       <description>Two days ago, Github&amp;rsquo;s CEO Thomas Dohmke added his voice to the many that came before to say:&#xA;Either you have to embrace the Al, or you get out of your career. 1&#xA;This is not the first time I&amp;rsquo;ve heard this kind of discourse, usually from people who haven&amp;rsquo;t done a day of software engineering in their life. And I hate it. So this post is about why it&amp;rsquo;s silly, why they&amp;rsquo;re wrong to address you in these terms and why, if you&amp;rsquo;re a developer in the software field, you have a little bit less reason to worry than they&amp;rsquo;d like you to think.</description>
     </item>
   </channel>

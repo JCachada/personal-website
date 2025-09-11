@@ -3,12 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jcachada.dev/</loc>
-    <lastmod>2025-08-07T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/death/</loc>
+    <lastmod>2025-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/grandfather/</loc>
+    <lastmod>2025-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/grief/</loc>
+    <lastmod>2025-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/journal/</loc>
+    <lastmod>2025-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/memory/</loc>
+    <lastmod>2025-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/my_grandfather/</loc>
+    <lastmod>2025-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/</loc>
+    <lastmod>2025-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jcachada.dev/weblog/ai/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/</loc>
+    <lastmod>2025-08-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jcachada.dev/weblog/development/</loc>
+    <lastmod>2025-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jcachada.dev/weblog/learning/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jcachada.dev/weblog/llm/</loc>
@@ -17,10 +44,7 @@
     <loc>https://jcachada.dev/weblog/opinion/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jcachada.dev/weblog/</loc>
-    <lastmod>2025-08-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jcachada.dev/weblog/you-wont-be-left-behind-the-problem-with-ai-fud/</loc>
+    <loc>https://jcachada.dev/weblog/you-dont-own-my-brain-the-problem-with-ai-fud/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jcachada.dev/weblog/2024-reading-list/</loc>
