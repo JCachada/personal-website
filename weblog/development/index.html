@@ -8,7 +8,7 @@
 <title>Development | joão&#39;s website 🐟</title>
 <meta name="title" content="Development" />
 <meta name="description" content="The home of content for João Cachada, Senior Software Engineer and writer." />
-<meta name="keywords" content="ai,blog,cyberpunk,death,debutnovel,development,fiction,game,grandfather,grief,journal,journaling,llm,memory,opinion,reading,review,weblog,writing," />
+<meta name="keywords" content="ai,blog,cyberpunk,death,debutnovel,development,fiction,game,grandfather,grief,journal,journaling,learning,llm,memory,opinion,reading,review,weblog,writing," />
 
 
 <meta property="og:title" content="Development" />
@@ -31,17 +31,62 @@
 
   <link rel="alternate" type="application/rss+xml" href="https://jcachada.dev/weblog/development/index.xml" title="joão's website 🐟" />
   <style>
+  :root {
+     
+    --flexoki-black: #100F0F;
+    --flexoki-paper: #FFFCF0;
+    
+     
+    --flexoki-50: #F2F0E5;
+    --flexoki-100: #E6E4D9;
+    --flexoki-150: #DAD8CE;
+    --flexoki-200: #CECDC3;
+    --flexoki-300: #B7B5AC;
+    --flexoki-600: #6F6E69;
+    --flexoki-850: #343331;
+    --flexoki-950: #1C1B1A;
+    
+     
+    --flexoki-dark-50: #1C1B1A;
+    --flexoki-dark-100: #282726;
+    --flexoki-dark-150: #343331;
+    --flexoki-dark-200: #403E3C;
+    --flexoki-dark-300: #575653;
+    
+     
+    --flexoki-red: #AF3029;
+    --flexoki-orange: #BC5215;
+    --flexoki-yellow: #AD8301;
+    --flexoki-green: #66800B;
+    --flexoki-cyan: #24837B;
+    --flexoki-blue: #205EA6;
+    --flexoki-purple: #5E409D;
+    --flexoki-magenta: #A02F6F;
+    
+     
+    --flexoki-red-dark: #D14D41;
+    --flexoki-orange-dark: #DA702C;
+    --flexoki-yellow-dark: #D0A215;
+    --flexoki-green-dark: #879A39;
+    --flexoki-cyan-dark: #3AA99F;
+    --flexoki-blue-dark: #4385BE;
+    --flexoki-purple-dark: #8B7EC8;
+    --flexoki-magenta-dark: #CE5D97;
+  }
+
   body {
     font-family: Verdana, sans-serif;
     margin: auto;
     padding: 20px;
     max-width: 720px;
     text-align: left;
-    background-color: #fff;
+    background-color: var(--flexoki-paper);
     word-wrap: break-word;
     overflow-wrap: break-word;
-    line-height: 1.5;
-    color: #444;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    color: var(--flexoki-600);
+    font-size: 16px;
   }
 
   h1,
@@ -52,12 +97,36 @@
   h6,
   strong,
   b {
-    color: #222;
+    color: var(--flexoki-black);
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 2.2em;
+    margin: 0.5em 0 0.75em 0;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin: 1.4em 0 0.6em 0;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.3em;
+    margin: 1.3em 0 0.5em 0;
+    line-height: 1.4;
+  }
+
+  h4, h5, h6 {
+    font-size: 1.1em;
+    margin: 1.2em 0 0.4em 0;
+    line-height: 1.4;
   }
 
   a {
-    color: #3273dc;
-     
+    color: var(--flexoki-blue);
   }
 
   .title {
@@ -76,14 +145,25 @@
   textarea {
     width: 100%;
     font-size: 16px;
+    background-color: var(--flexoki-50);
+    color: var(--flexoki-black);
+    border: 1px solid var(--flexoki-200);
   }
 
   input {
     font-size: 16px;
+    background-color: var(--flexoki-50);
+    color: var(--flexoki-black);
+    border: 1px solid var(--flexoki-200);
+  }
+
+  p {
+    margin: 1.2em 0;
+    line-height: 1.7;
   }
 
   content {
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   table {
@@ -96,16 +176,18 @@
 
   code {
     padding: 2px 5px;
-    background-color: #f2f2f2;
+    background-color: var(--flexoki-100);
+    color: var(--flexoki-black);
   }
 
   pre code {
-    color: #222;
+    color: var(--flexoki-black);
     display: block;
     padding: 20px;
     white-space: pre-wrap;
     font-size: 14px;
     overflow-x: auto;
+    background-color: var(--flexoki-50);
   }
 
   div.highlight pre {
@@ -119,10 +201,12 @@
   }
 
   blockquote {
-    border-left: 1px solid #999;
-    color: #222;
-    padding-left: 20px;
+    border-left: 3px solid var(--flexoki-300);
+    color: var(--flexoki-600);
+    padding-left: 24px;
+    margin: 1.5em 0;
     font-style: italic;
+    line-height: 1.8;
   }
 
   footer {
@@ -130,12 +214,12 @@
   }
 
   .helptext {
-    color: #777;
+    color: var(--flexoki-300);
     font-size: small;
   }
 
   .errorlist {
-    color: #eba613;
+    color: var(--flexoki-orange);
     font-size: small;
   }
 
@@ -143,24 +227,29 @@
   ul.blog-posts {
     list-style-type: none;
     padding: unset;
+    margin: 1.5em 0;
   }
 
   ul.blog-posts li {
     display: flex;
+    margin-bottom: 0.8em;
+    line-height: 1.6;
   }
 
   ul.blog-posts li span {
     flex: 0 0 130px;
+    font-size: 0.9em;
+    color: var(--flexoki-300);
   }
 
   ul.blog-posts li a:visited {
-    color: #8b6fcb;
+    color: var(--flexoki-purple);
   }
 
   @media (prefers-color-scheme: light) {
     body {
-      background-color: #202b38;
-      color: #ddd;
+      background-color: var(--flexoki-dark-50);
+      color: var(--flexoki-200);
     }
 
     h1,
@@ -171,40 +260,48 @@
     h6,
     strong,
     b {
-      color: #eee;
+      color: var(--flexoki-paper);
     }
 
     a {
-      color: #8cc2dd;
+      color: var(--flexoki-blue-dark);
     }
 
     code {
-      background-color: #777;
+      background-color: var(--flexoki-dark-200);
+      color: var(--flexoki-paper);
     }
 
     pre code {
-      color: #ddd;
+      color: var(--flexoki-paper);
+      background-color: var(--flexoki-dark-100);
     }
 
     blockquote {
-      color: #ccc;
+      color: var(--flexoki-300);
+      border-left-color: var(--flexoki-dark-300);
     }
 
     textarea,
     input {
-      background-color: #252525;
-      color: #ddd;
+      background-color: var(--flexoki-dark-150);
+      color: var(--flexoki-paper);
+      border-color: var(--flexoki-dark-300);
     }
 
     .helptext {
-      color: #aaa;
+      color: var(--flexoki-dark-300);
+    }
+
+    ul.blog-posts li a:visited {
+      color: var(--flexoki-purple-dark);
     }
   }
 
   @media (prefers-color-scheme: dark) {
     body {
-      background-color: #202b38;
-      color: #ddd;
+      background-color: var(--flexoki-dark-50);
+      color: var(--flexoki-200);
     }
 
     h1,
@@ -215,33 +312,41 @@
     h6,
     strong,
     b {
-      color: #eee;
+      color: var(--flexoki-paper);
     }
 
     a {
-      color: #8cc2dd;
+      color: var(--flexoki-blue-dark);
     }
 
     code {
-      background-color: #777;
+      background-color: var(--flexoki-dark-200);
+      color: var(--flexoki-paper);
     }
 
     pre code {
-      color: #ddd;
+      color: var(--flexoki-paper);
+      background-color: var(--flexoki-dark-100);
     }
 
     blockquote {
-      color: #ccc;
+      color: var(--flexoki-300);
+      border-left-color: var(--flexoki-dark-300);
     }
 
     textarea,
     input {
-      background-color: #252525;
-      color: #ddd;
+      background-color: var(--flexoki-dark-150);
+      color: var(--flexoki-paper);
+      border-color: var(--flexoki-dark-300);
     }
 
     .helptext {
-      color: #aaa;
+      color: var(--flexoki-dark-300);
+    }
+
+    ul.blog-posts li a:visited {
+      color: var(--flexoki-purple-dark);
     }
   }
 
@@ -268,6 +373,161 @@
 
   details[open] .clickable-header h4::before {
     content: "▼";
+  }
+
+   
+  .eyes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .eye {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .eye.visible {
+    opacity: 0.8;
+  }
+
+   
+  .cat-eye {
+    width: 20px;
+    height: 12px;
+    background: var(--flexoki-yellow);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+  }
+
+  .cat-eye::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 8px;
+    background: var(--flexoki-black);
+    border-radius: 2px;
+  }
+
+
+   
+  .predator-eye {
+    width: 16px;
+    height: 20px;
+    background: var(--flexoki-yellow);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.3);
+  }
+
+  .predator-eye::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 16px;
+    background: var(--flexoki-black);
+    border-radius: 1px;
+  }
+
+
+   
+  @keyframes blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+
+  @keyframes predatorBlink {
+    0%, 90%, 100% { transform: scaleX(1); }
+    95% { transform: scaleX(0.1); }
+  }
+
+  .eye.blinking {
+    animation: blink 3s infinite;
+  }
+
+  .predator-eye.blinking {
+    animation: predatorBlink 3s infinite;
+  }
+
+   
+  @media (prefers-color-scheme: dark) {
+    .cat-eye, .predator-eye {
+      background: var(--flexoki-yellow-dark);
+    }
+  }
+
+   
+  .predator-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: var(--flexoki-50);
+    border: 2px solid var(--flexoki-200);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    color: var(--flexoki-600);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .predator-toggle:hover {
+    background: var(--flexoki-100);
+    border-color: var(--flexoki-300);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .predator-toggle input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--flexoki-blue);
+  }
+
+
+   
+  @media (prefers-color-scheme: dark) {
+    .predator-toggle {
+      background: var(--flexoki-dark-150);
+      border-color: var(--flexoki-dark-300);
+      color: var(--flexoki-200);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .predator-toggle:hover {
+      background: var(--flexoki-dark-200);
+      border-color: var(--flexoki-dark-200);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .predator-toggle input[type="checkbox"] {
+      accent-color: var(--flexoki-blue-dark);
+    }
+  }
+
+   
+  @media (max-width: 768px) {
+    .predator-toggle {
+      display: none;
+    }
   }
 </style>
 </head>
@@ -302,6 +562,17 @@
     <li>
       <span>
         <i>
+          <time datetime='2025-11-14' pubdate>
+            14 Nov, 2025
+          </time>
+        </i>
+      </span>
+      <a href="https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/">Building a Complete Android App &#43; Backend With Claude</a>
+    </li>
+    
+    <li>
+      <span>
+        <i>
           <time datetime='2025-08-07' pubdate>
             07 Aug, 2025
           </time>
@@ -329,7 +600,296 @@
   </main>
   <footer></footer>
 
+  
+<div class="eyes-container" id="eyesContainer"></div>
+
+
+<label class="predator-toggle" for="keepAwayPredators">
+  <input type="checkbox" id="keepAwayPredators" onchange="window.handlePredatorToggle(this)">
+  Keep away predators
+</label>
+
+<script>
+(function() {
+  const eyeTypes = ['cat-eye', 'predator-eye'];
+  const container = document.getElementById('eyesContainer');
+  const toggleCheckbox = document.getElementById('keepAwayPredators');
+  let eyes = [];
+  let lastScrollY = window.scrollY;
+  let lastEyeAddTime = 0;
+  let eyesEnabled = true;
+  
+  function updateContainerHeight() {
     
-</body>
+    const docHeight = Math.max(
+      document.body.scrollHeight, 
+      document.body.offsetHeight, 
+      document.documentElement.clientHeight, 
+      document.documentElement.scrollHeight, 
+      document.documentElement.offsetHeight
+    );
+    container.style.height = docHeight + 'px';
+  }
+  
+  function createEyePairWithType(yPosition = null, forceType = null) {
+    const eyeType = forceType || eyeTypes[Math.floor(Math.random() * eyeTypes.length)];
+    return createEyePair(yPosition, eyeType);
+  }
+  
+  function checkCollision(x, y, existingEyes) {
+    const minDistance = 80; 
+    
+    for (let eye of existingEyes) {
+      const eyeX = parseInt(eye.style.left);
+      const eyeY = parseInt(eye.style.top);
+      const distance = Math.sqrt(Math.pow(x - eyeX, 2) + Math.pow(y - eyeY, 2));
+      
+      if (distance < minDistance) {
+        return true; 
+      }
+    }
+    return false;
+  }
+
+  function createEyePair(yPosition = null, eyeType = null) {
+    
+    const contentWidth = Math.min(720, window.innerWidth - 40);
+    const sideMargin = (window.innerWidth - contentWidth) / 2;
+    
+    
+    if (sideMargin < 60) return [];
+    
+    const isLeft = Math.random() < 0.5;
+    const finalEyeType = eyeType || eyeTypes[Math.floor(Math.random() * eyeTypes.length)];
+    
+    
+    const y = yPosition !== null 
+      ? yPosition 
+      : Math.random() * window.innerHeight;
+    
+    
+    let baseX, attempts = 0;
+    do {
+      baseX = isLeft 
+        ? Math.random() * (sideMargin - 60) + 10
+        : window.innerWidth - (Math.random() * (sideMargin - 60) + 60);
+      attempts++;
+    } while (checkCollision(baseX, y, eyes) && attempts < 10);
+    
+    
+    if (attempts >= 10) return [];
+    
+    
+    let eyeSpacing = finalEyeType === 'cat-eye' ? 20 : 18;
+    
+    
+    const leftEye = document.createElement('div');
+    const rightEye = document.createElement('div');
+    
+    leftEye.className = `eye ${finalEyeType}`;
+    rightEye.className = `eye ${finalEyeType}`;
+    
+    const topPos = Math.floor(y);
+    const leftPos = Math.floor(baseX);
+    const rightPos = Math.floor(baseX + eyeSpacing);
+    
+    leftEye.style.position = 'absolute';
+    leftEye.style.left = leftPos + 'px';
+    leftEye.style.top = topPos + 'px';
+    leftEye.style.margin = '0';
+    leftEye.style.padding = '0';
+    leftEye.style.border = leftEye.style.border || '0';
+    leftEye.style.display = 'block';
+    
+    rightEye.style.position = 'absolute';
+    rightEye.style.left = rightPos + 'px';
+    rightEye.style.top = topPos + 'px';
+    rightEye.style.margin = '0';
+    rightEye.style.padding = '0';
+    rightEye.style.border = rightEye.style.border || '0';
+    rightEye.style.display = 'block';
+    
+    
+    const blinkDelay = Math.random() * 10000; 
+    const blinkInterval = Math.random() * 5000 + 3000; 
+    
+    setTimeout(() => {
+      leftEye.classList.add('blinking');
+      rightEye.classList.add('blinking');
+      
+      
+      setInterval(() => {
+        
+        leftEye.classList.remove('blinking');
+        rightEye.classList.remove('blinking');
+        
+        setTimeout(() => {
+          leftEye.classList.add('blinking');
+          rightEye.classList.add('blinking');
+        }, 100);
+      }, blinkInterval);
+    }, blinkDelay);
+    
+    container.appendChild(leftEye);
+    container.appendChild(rightEye);
+    
+    setTimeout(() => {
+      leftEye.classList.add('visible');
+      rightEye.classList.add('visible');
+    }, 50);
+    
+    return [leftEye, rightEye];
+  }
+  
+  function removeAllEyes() {
+    
+    eyes.forEach(eye => {
+      if (eye.parentNode) {
+        eye.parentNode.removeChild(eye);
+      }
+    });
+    eyes = [];
+  }
+
+  function addInitialEyes() {
+    
+    if (!eyesEnabled) return;
+    
+    updateContainerHeight();
+    
+    
+    const numPairs = 3;
+    const usedTypes = [];
+    
+    for (let i = 0; i < numPairs; i++) {
+      
+      let eyeType;
+      do {
+        eyeType = eyeTypes[Math.floor(Math.random() * eyeTypes.length)];
+      } while (usedTypes.length > 0 && usedTypes[usedTypes.length - 1] === eyeType && usedTypes.length < eyeTypes.length);
+      
+      usedTypes.push(eyeType);
+      
+      
+      const y = (window.innerHeight / (numPairs + 1)) * (i + 1);
+      const eyePair = createEyePairWithType(y, eyeType);
+      if (eyePair.length === 2) {
+        eyes.push(...eyePair);
+      }
+    }
+  }
+  
+  function addSingleEyePair() {
+    
+    if (!eyesEnabled) return;
+    
+    const currentScrollY = window.scrollY;
+    
+    
+    const y = currentScrollY + Math.random() * window.innerHeight;
+    const eyePair = createEyePair(y);
+    if (eyePair.length === 2) {
+      eyes.push(...eyePair);
+    }
+    
+    
+    updateContainerHeight();
+  }
+
+  function addScrollEyes() {
+    const currentTime = Date.now();
+    
+    
+    if (currentTime - lastEyeAddTime < 1200) return;
+    
+    lastEyeAddTime = currentTime;
+    
+    
+    addSingleEyePair();
+  }
+  
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+    
+    
+    if (scrollDelta > 50) {
+      addScrollEyes();
+    }
+    
+    lastScrollY = currentScrollY;
+  }
+  
+  function handleResize() {
+    updateContainerHeight();
+    
+    
+    eyes.forEach(eye => {
+      const contentWidth = Math.min(720, window.innerWidth - 40);
+      const sideMargin = (window.innerWidth - contentWidth) / 2;
+      
+      if (sideMargin < 50) {
+        eye.style.display = 'none';
+      } else {
+        eye.style.display = 'block';
+      }
+    });
+  }
+  
+  
+  function handleToggleChange(checkbox) {
+    eyesEnabled = !checkbox.checked;
+    
+    
+    localStorage.setItem('keepAwayPredators', checkbox.checked.toString());
+    
+    if (checkbox.checked) {
+      
+      removeAllEyes();
+    } else {
+      
+      setTimeout(addInitialEyes, 100);
+    }
+  }
+
+  
+  function initializeToggleState() {
+    const savedState = localStorage.getItem('keepAwayPredators');
+    const checkbox = document.getElementById('keepAwayPredators');
+    
+    if (savedState !== null && checkbox) {
+      const isChecked = savedState === 'true';
+      checkbox.checked = isChecked;
+      eyesEnabled = !isChecked;
+    }
+  }
+
+  
+  window.handlePredatorToggle = handleToggleChange;
+
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', handleResize);
+  
+  
+  function initializeEyes() {
+    
+    if (eyesEnabled) {
+      setTimeout(addInitialEyes, 100);
+    }
+  }
+  
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeToggleState();
+      initializeEyes();
+    });
+  } else {
+    initializeToggleState();
+    initializeEyes();
+  }
+})();
+</script></body>
 
 </html>

@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2022, João Cachada.</copyright>
-    <lastBuildDate>Thu, 07 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jcachada.dev/weblog/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Complete Android App &#43; Backend With Claude</title>
+      <link>https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/</guid>
+      <description>There&amp;rsquo;s been a lot of discourse lately about LLMs and how useful they are. I&amp;rsquo;ve said before that I&amp;rsquo;m not a huge fan of LLMs and I have a lot of conceptual problems, that range anywhere from &amp;ldquo;it&amp;rsquo;s horrible for the climate and a violation of copyright&amp;rdquo;, to &amp;ldquo;it&amp;rsquo;s another step in the Big Tech oligarchy taking over every aspect of our lives and making them measurably worse&amp;rdquo;. Those things worry me a lot still, and I don&amp;rsquo;t have a clever solution to them.</description>
+    </item>
     <item>
       <title>You Don&#39;t Own My Brain - The Problem With AI FUD</title>
       <link>https://jcachada.dev/weblog/you-dont-own-my-brain-the-problem-with-ai-fud/</link>
