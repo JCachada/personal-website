@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learning on joão&#39;s website 🐟</title>
+    <link>https://jcachada.dev/weblog/learning/</link>
+    <description>Recent content in Learning on joão&#39;s website 🐟</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2022, João Cachada.</copyright>
+    <lastBuildDate>Fri, 14 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jcachada.dev/weblog/learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Complete Android App &#43; Backend With Claude</title>
+      <link>https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/</guid>
+      <description>There&amp;rsquo;s been a lot of discourse lately about LLMs and how useful they are. I&amp;rsquo;ve said before that I&amp;rsquo;m not a huge fan of LLMs and I have a lot of conceptual problems, that range anywhere from &amp;ldquo;it&amp;rsquo;s horrible for the climate and a violation of copyright&amp;rdquo;, to &amp;ldquo;it&amp;rsquo;s another step in the Big Tech oligarchy taking over every aspect of our lives and making them measurably worse&amp;rdquo;. Those things worry me a lot still, and I don&amp;rsquo;t have a clever solution to them.</description>
+    </item>
+  </channel>
+</rss>

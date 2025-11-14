@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Building a Complete Android App &#43; Backend With Claude | joão&#39;s website 🐟</title>
+<meta name="title" content="Building a Complete Android App &#43; Backend With Claude" />
+<meta name="description" content="I ran an experiment to build a full Android app, along with a functional backend, using Claude. The goal was to figure out exactly where I stood on LLM&#39;s and their usefulness. This post details my thoughts after the development process." />
+<meta name="keywords" content="LLM,ai,opinion,development,learning," />
+
+
+<meta property="og:title" content="Building a Complete Android App &#43; Backend With Claude" />
+<meta property="og:description" content="I ran an experiment to build a full Android app, along with a functional backend, using Claude. The goal was to figure out exactly where I stood on LLM&#39;s and their usefulness. This post details my thoughts after the development process." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/" /><meta property="og:image" content="https://jcachada.dev/images/share.png" /><meta property="article:section" content="weblog" />
+<meta property="article:published_time" content="2025-11-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-11-14T00:00:00+00:00" /><meta property="og:site_name" content="João Cachada&#39;s website" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://jcachada.dev/images/share.png" /><meta name="twitter:title" content="Building a Complete Android App &#43; Backend With Claude"/>
+<meta name="twitter:description" content="I ran an experiment to build a full Android app, along with a functional backend, using Claude. The goal was to figure out exactly where I stood on LLM&#39;s and their usefulness. This post details my thoughts after the development process."/>
+
+
+
+<meta itemprop="name" content="Building a Complete Android App &#43; Backend With Claude">
+<meta itemprop="description" content="I ran an experiment to build a full Android app, along with a functional backend, using Claude. The goal was to figure out exactly where I stood on LLM&#39;s and their usefulness. This post details my thoughts after the development process."><meta itemprop="datePublished" content="2025-11-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2025-11-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2102"><meta itemprop="image" content="https://jcachada.dev/images/share.png" />
+<meta itemprop="keywords" content="LLM,ai,opinion,development,learning," />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+     
+    --flexoki-black: #100F0F;
+    --flexoki-paper: #FFFCF0;
+    
+     
+    --flexoki-50: #F2F0E5;
+    --flexoki-100: #E6E4D9;
+    --flexoki-150: #DAD8CE;
+    --flexoki-200: #CECDC3;
+    --flexoki-300: #B7B5AC;
+    --flexoki-600: #6F6E69;
+    --flexoki-850: #343331;
+    --flexoki-950: #1C1B1A;
+    
+     
+    --flexoki-dark-50: #1C1B1A;
+    --flexoki-dark-100: #282726;
+    --flexoki-dark-150: #343331;
+    --flexoki-dark-200: #403E3C;
+    --flexoki-dark-300: #575653;
+    
+     
+    --flexoki-red: #AF3029;
+    --flexoki-orange: #BC5215;
+    --flexoki-yellow: #AD8301;
+    --flexoki-green: #66800B;
+    --flexoki-cyan: #24837B;
+    --flexoki-blue: #205EA6;
+    --flexoki-purple: #5E409D;
+    --flexoki-magenta: #A02F6F;
+    
+     
+    --flexoki-red-dark: #D14D41;
+    --flexoki-orange-dark: #DA702C;
+    --flexoki-yellow-dark: #D0A215;
+    --flexoki-green-dark: #879A39;
+    --flexoki-cyan-dark: #3AA99F;
+    --flexoki-blue-dark: #4385BE;
+    --flexoki-purple-dark: #8B7EC8;
+    --flexoki-magenta-dark: #CE5D97;
+  }
+
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: var(--flexoki-paper);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    color: var(--flexoki-600);
+    font-size: 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: var(--flexoki-black);
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 2.2em;
+    margin: 0.5em 0 0.75em 0;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin: 1.4em 0 0.6em 0;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.3em;
+    margin: 1.3em 0 0.5em 0;
+    line-height: 1.4;
+  }
+
+  h4, h5, h6 {
+    font-size: 1.1em;
+    margin: 1.2em 0 0.4em 0;
+    line-height: 1.4;
+  }
+
+  a {
+    color: var(--flexoki-blue);
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+    background-color: var(--flexoki-50);
+    color: var(--flexoki-black);
+    border: 1px solid var(--flexoki-200);
+  }
+
+  input {
+    font-size: 16px;
+    background-color: var(--flexoki-50);
+    color: var(--flexoki-black);
+    border: 1px solid var(--flexoki-200);
+  }
+
+  p {
+    margin: 1.2em 0;
+    line-height: 1.7;
+  }
+
+  content {
+    line-height: 1.7;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: var(--flexoki-100);
+    color: var(--flexoki-black);
+  }
+
+  pre code {
+    color: var(--flexoki-black);
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+    background-color: var(--flexoki-50);
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--flexoki-300);
+    color: var(--flexoki-600);
+    padding-left: 24px;
+    margin: 1.5em 0;
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  footer {
+    text-align: left;
+  }
+
+  .helptext {
+    color: var(--flexoki-300);
+    font-size: small;
+  }
+
+  .errorlist {
+    color: var(--flexoki-orange);
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+    margin: 1.5em 0;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+    margin-bottom: 0.8em;
+    line-height: 1.6;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+    font-size: 0.9em;
+    color: var(--flexoki-300);
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--flexoki-purple);
+  }
+
+  @media (prefers-color-scheme: light) {
+    body {
+      background-color: var(--flexoki-dark-50);
+      color: var(--flexoki-200);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: var(--flexoki-paper);
+    }
+
+    a {
+      color: var(--flexoki-blue-dark);
+    }
+
+    code {
+      background-color: var(--flexoki-dark-200);
+      color: var(--flexoki-paper);
+    }
+
+    pre code {
+      color: var(--flexoki-paper);
+      background-color: var(--flexoki-dark-100);
+    }
+
+    blockquote {
+      color: var(--flexoki-300);
+      border-left-color: var(--flexoki-dark-300);
+    }
+
+    textarea,
+    input {
+      background-color: var(--flexoki-dark-150);
+      color: var(--flexoki-paper);
+      border-color: var(--flexoki-dark-300);
+    }
+
+    .helptext {
+      color: var(--flexoki-dark-300);
+    }
+
+    ul.blog-posts li a:visited {
+      color: var(--flexoki-purple-dark);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: var(--flexoki-dark-50);
+      color: var(--flexoki-200);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: var(--flexoki-paper);
+    }
+
+    a {
+      color: var(--flexoki-blue-dark);
+    }
+
+    code {
+      background-color: var(--flexoki-dark-200);
+      color: var(--flexoki-paper);
+    }
+
+    pre code {
+      color: var(--flexoki-paper);
+      background-color: var(--flexoki-dark-100);
+    }
+
+    blockquote {
+      color: var(--flexoki-300);
+      border-left-color: var(--flexoki-dark-300);
+    }
+
+    textarea,
+    input {
+      background-color: var(--flexoki-dark-150);
+      color: var(--flexoki-paper);
+      border-color: var(--flexoki-dark-300);
+    }
+
+    .helptext {
+      color: var(--flexoki-dark-300);
+    }
+
+    ul.blog-posts li a:visited {
+      color: var(--flexoki-purple-dark);
+    }
+  }
+
+  summary.clickable-header.big-top-pull {
+    display: inline;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: -100px;
+    margin-top: -20px;
+  }
+
+  summary.clickable-header.small-top-pull {
+    display: inline;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: -100px;
+    margin-top: -5px;
+  }
+
+  .clickable-header h4::before {
+    content: "▶";
+    margin-right: 5px;
+  }
+
+  details[open] .clickable-header h4::before {
+    content: "▼";
+  }
+
+   
+  .eyes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .eye {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .eye.visible {
+    opacity: 0.8;
+  }
+
+   
+  .cat-eye {
+    width: 20px;
+    height: 12px;
+    background: var(--flexoki-yellow);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+  }
+
+  .cat-eye::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 8px;
+    background: var(--flexoki-black);
+    border-radius: 2px;
+  }
+
+
+   
+  .predator-eye {
+    width: 16px;
+    height: 20px;
+    background: var(--flexoki-yellow);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.3);
+  }
+
+  .predator-eye::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 16px;
+    background: var(--flexoki-black);
+    border-radius: 1px;
+  }
+
+
+   
+  @keyframes blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+
+  @keyframes predatorBlink {
+    0%, 90%, 100% { transform: scaleX(1); }
+    95% { transform: scaleX(0.1); }
+  }
+
+  .eye.blinking {
+    animation: blink 3s infinite;
+  }
+
+  .predator-eye.blinking {
+    animation: predatorBlink 3s infinite;
+  }
+
+   
+  @media (prefers-color-scheme: dark) {
+    .cat-eye, .predator-eye {
+      background: var(--flexoki-yellow-dark);
+    }
+  }
+
+   
+  .predator-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: var(--flexoki-50);
+    border: 2px solid var(--flexoki-200);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    color: var(--flexoki-600);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .predator-toggle:hover {
+    background: var(--flexoki-100);
+    border-color: var(--flexoki-300);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .predator-toggle input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--flexoki-blue);
+  }
+
+
+   
+  @media (prefers-color-scheme: dark) {
+    .predator-toggle {
+      background: var(--flexoki-dark-150);
+      border-color: var(--flexoki-dark-300);
+      color: var(--flexoki-200);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .predator-toggle:hover {
+      background: var(--flexoki-dark-200);
+      border-color: var(--flexoki-dark-200);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .predator-toggle input[type="checkbox"] {
+      accent-color: var(--flexoki-blue-dark);
+    }
+  }
+
+   
+  @media (max-width: 768px) {
+    .predator-toggle {
+      display: none;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>joão&#39;s website 🐟</h2>
+</a>
+<nav><a href="/">Home & About</a>
+
+
+<a href="/weblog">Weblog</a>
+
+
+<a href="/not-a-product">Not a Product</a>
+
+
+<a href="/say-hi">Say Hi</a>
+</nav>
+</header>
+  <main>
+
+<h1>Building a Complete Android App &#43; Backend With Claude</h1>
+<p>
+  <i>
+    <time datetime='2025-11-14' pubdate>
+      14 Nov, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <p>There&rsquo;s been a lot of discourse lately about LLMs and how useful they are. I&rsquo;ve said <a href="https://jcachada.dev/weblog/you-dont-own-my-brain-the-problem-with-ai-fud/">before</a> that I&rsquo;m not a huge fan of LLMs and I have a lot of conceptual problems, that range anywhere from &ldquo;it&rsquo;s horrible for the climate and a violation of copyright&rdquo;, to &ldquo;it&rsquo;s another step in the Big Tech oligarchy taking over every aspect of our lives and making them measurably worse&rdquo;. Those things worry me a lot still, and I don&rsquo;t have a clever solution to them.</p>
+<p>But one of the criticisms that I&rsquo;ve engaged with a lot is the idea that they are useless. There&rsquo;s a lot of discourse going around that is some variation of &ldquo;LLM&rsquo;s are not doing the things I want them to do, so I don&rsquo;t see the usefulness.&rdquo; At the same time, they are being pushed very hard by Big Tech, by companies all around the globe, and by people in positions of power in businesses. While it would be very tempting to think these are all shills with no social conscience who are simply caving to the tech bro oligarchy, that feels like the lazy way out. There are a lot of smart people involved in these pushes, and I&rsquo;d be surprised if they were all just losing the plot.</p>
+<p>As a software tradesman in my current career, I also feel like I have a responsibility to engage with these tools in some form. I can&rsquo;t just afford to be unequipped to engage in the discussion on an actual technical level - even if I end up being a detractor in internal conversations, I need to actually have done the legwork to back up those positions. I wish appeals to morals were enough, but reality often works differently.</p>
+<p>So I set out to engage with the LLMs in a constrained experiment to try and answer that specific question - do they work?</p>
+<h2 id="the-methodology">The methodology</h2>
+<p>The way I went about this experimentation is quite simple: I tried to build a full app, from scratch, comprised of a backend and an android app, by <strong>only</strong> using Claude. I chose Claude because it was, at the time, the LLM people in my circles seemed to agree was best for coding tasks. And I chose this task because it is something I could do on my own, but only by putting a significant amount of time into it. This way, I hoped I could figure out if the LLM was actually speeding me up, or if it was making me slower in the end.</p>
+<p>I decided to try this in two ways:</p>
+<ol>
+<li>
+<p>The first way was to just open up a Claude Code terminal and start coding. I explained my ideas as I went and winged it as best I could. I nudged it when it lost track of things, provided as much guidance as I could, but engaged with it only through the terminal (and through the instructions in my <code>CLAUDE.MD</code>).</p>
+</li>
+<li>
+<p>The second way was a little more involved. I researched different ways people were using these LLMs, and used a variation of <a href="https://harper.blog/2025/05/08/basic-claude-code/">this</a> method. To summarize it, I used a reasoning model (Chat GPT in thinking mode) to discuss the plan first and build up a spec for my project. You can see the outputs in [this] folder. Then, I asked the same reasoning model to build me a prompt plan, telling it explicitly that I would feed these prompts to Claude. I used these as a base for the project.</p>
+</li>
+</ol>
+<h2 id="the-rules">The rules</h2>
+<p>Throughout both attempts, a few rules held true:</p>
+<ol>
+<li>
+<p>I did not write a single line of code manually. Everything in the project was input by Claude; I wanted to limit test how far it could go, and interfering would have made it harder to tell.</p>
+</li>
+<li>
+<p>I did not try different LLMs for the same task.</p>
+</li>
+<li>
+<p>I generally used the same context window for every day (a single running terminal instance). On certain occasions, when Claude was really hallucinating, I started a new terminal from scratch. Every time I did this, I asked it to restart from the context <code>.md</code> files I linked above, that keep track of the current state of the project across sessions.</p>
+</li>
+<li>
+<p>I never used <code>auto-accept</code>. I read every suggestion Claude gave me and gave it nudges throughout the experiment. The frequency of the nudges varied with the quality of the suggestions.</p>
+</li>
+</ol>
+<h2 id="the-results">The results</h2>
+<p>The code for this experiment can be found <a href="https://github.com/JCachada/dare-app-public">here</a>.</p>
+<p align="center">
+<img src="/images/dare_app_screenshot.png" alt="A screenshot of an android screen showing an application for repeatable tasks, in black and dark red themes, with buttons for Prizes, Dares and Settings." style="width:200px;"/>
+</p>
+<p>The app is fully functional, and the github repo would allow you to deploy it (although you&rsquo;d have to deploy both the backend and install the APKs on your phone). The main limitation is that it does not support full authentication, but rather a very naive sort of thing, where the API endpoints are publicly exposed (not even using Bearer Tokens / JWTs), so as long as you know your session id and the URL of the deployment, you can write prizes or dares. This is insecure, but it was good enough for the experiments I wanted to run.</p>
+<h2 id="the-learnings">The learnings</h2>
+<p>So, what did this all actually teach me? A few things.</p>
+<p>First of all, <strong>LLMs are not useless</strong> from a purely pragmatic point of view. They can and will speed you up at certain things, especially if you know how to direct them. For example, I am confident it would have taken me over a day to set up a proper Android development environment where I could run my tests. I would also have taken at least a couple of days throughout the project to actually write those tests. Using Claude significantly accelerated both of these processes. They did equally well at writing code with very strict parameters and specifications, and at doing very repetitive tasks like writing unit tests or making sure they all conformed to the same Arrange/Act/Assert format.</p>
+<p>However, their usefulness is <strong>heavily dependent on the mode of usage</strong>. The first way I tried using LLMs with (the one where I just talked to it in a terminal session) led absolutely nowhere. I ended up quitting in frustration after a week, after a particularly frustrating day of constant hallucinations. The second method was night and day - with a clear spec and a much more defined scope, things went a lot smoother and I actually got to a functioning end result. Claude is good at following clear, unambiguous instructions. It seems very important for its usefulness that by the time it&rsquo;s called upon, you already know exactly what it is meant to help you with. In my experiments, it did very poorly at trying to problem solve <em>and</em> write code at the same time. This makes me think that at least a part of the crowd that has found LLMs useless (and is not just externalizing a bias against those LLMs, however valid the reasons to do so may be) is struggling with the ways to use it, more than the tool&rsquo;s capabilities itself. A hammer is not a great tool if you talk to it about your podcast idea.</p>
+<p>Another important note is that LLMs are <strong>not reliable</strong>. After running this experiment, I would never give LLMs elevated permissions, like database access or even the ability to commit. Even though my <code>CLAUDE.md</code> file explicitly states to never commit things without passing tests, and I reiterated it multiple times throughout the sessions, I still found that Claude often ignored me and tried to hack its way past a bad state. I&rsquo;ve catalogued all instances where Claude commited failed builds <a href="https://github.com/JCachada/dare-app-public/blob/main/llm_files/build_history.md">here</a>. As you can see, it commited broken builds over 25 times. 3 of those are somewhat excusable: the ones listed as API/Contract issues went away once I asked Claude to introduce contract tests. However, the others are inexcusable. Claude committed broken tests, builds that wouldn&rsquo;t compile, and sometimes even tried to just comment out the test to be able to move on, despite frequent and explicit guidance not to do so.</p>
+<p>This is also why I would <strong>never trust an LLM in auto-accept mode</strong>. I let Claude commit these so the failures would be reflected in the <code>git</code> history, but most of them I saw happening in real time when I was reviewing the code it proposed. If I had not reviewed all of the code as it was written and provided prompt corrections, these would have been far more than 25 broken builds. Which leads me to&hellip;</p>
+<h2 id="the-conclusion">The conclusion</h2>
+<p>One of the things this has cemented for me is that LLMs can function as an accelerator, but they can not function as a way to plug holes. What I mean by this is: <strong>you can sometimes use LLMs to accelerate things that you know how to do, but would take you a long time</strong>. If you provide close supervision and clear scope, they can save a lot of menial work. And they can be useful for compounding on knowledge you already have, provided you have enough knowledge of the subject matter to call its bullshit.</p>
+<p>However, they <strong>cannot be used to do things you don&rsquo;t know how to do in the first place</strong>. The main reason for this is that you won&rsquo;t be able to tell when it&rsquo;s messing up; it often does so in perfidious ways that kind of sound correct, but will bite you (hard) in the long term if you let them slip through. In this case, I would recommend trying to learn how to do the thing first.</p>
+<p>This means, with a gross oversimplification: if you&rsquo;re a software engineer, you can probably get some value out of an LLM for writing code. If you&rsquo;re a product manager, please ask your engineers to code for you instead. I imagine this works similarly for other roles: if you&rsquo;re a translator or a copywriter, I imagine you can spitball some options with an LLM, but you have to have enough subject matter expertise to then keep it on track, and to catch it when it inevitably fucks up.</p>
+<h2 id="the-gambling-hot-take">The gambling hot take</h2>
+<p>One funny thing that I realized while using the LLM is that it causes a different emotional response in me than normal code writing. Writing code is a grind; you systematically work away at a problem and rule out options for solving it, refine your approach, iterate until you have something that you&rsquo;re happy with. It&rsquo;s an almost meditative process of approaching something workable through methodical problem solving, at least for me.</p>
+<p>When you introduce an LLM, the incentives change, and it becomes more like gambling. I felt the same parts of my brain activate as when I play a quick card game or a round of Balatro. With LLMs, I&rsquo;m prompting the slot machine and banking on it putting out the right answer; when it did, it felt less like the delayed, long lasting gratification of wrapping up a complex problem through my subject matter expertise, and more like getting the exact right draw at the exact right time, or getting a particularly satisfying critical hit in a fighting game. It was dopamine fast food instead of what I usually get out of coding. I thought that was an interesting thing to see in action, and it might explain why developers sometimes trend towards using tools like LLMs even when they are not the right fit for the job, or when they are not actually giving them any productivity gains.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>Like I&rsquo;ve mentioned many times, I think part of deciding where I stand on LLMs and the current state of the tech industry is a complex process that <strong>requires</strong> engaging with the tools in good faith before I take an informed position. This experiment was an exercise in trying to do just that. I&rsquo;m not endorsing LLM usage - in fact, if anything, I still very much trend in the direction of <em>we&rsquo;re burning up our planet for a chatbot to line the wallets of despicable people</em>. Recognizing that LLMs have legitimate usages does not necessarily threaten that; if anything, saying that I feel that way <em>even if they have legitimate usefulness</em> is proof of how strongly I feel about those downsides.</p>
+<p>What I&rsquo;m saying is - please don&rsquo;t yell at me or send me e-mails complaining about how I&rsquo;m furthering the Big Tech world takeover by using Claude for this. I believe having mature positions on LLM discourse requires some level of actual engagement, and that no one should be discouraged from trying to get to a more informed position.</p>
+<p>If you have legitimate issues or arguments in good faith you want to raise, as usual, I am all ears.</p>
+
+</content>
+<p>
+  
+  <a href="https://jcachada.dev/weblog/llm/">#LLM</a>
+  
+  <a href="https://jcachada.dev/weblog/ai/">#Ai</a>
+  
+  <a href="https://jcachada.dev/weblog/opinion/">#Opinion</a>
+  
+  <a href="https://jcachada.dev/weblog/development/">#Development</a>
+  
+  <a href="https://jcachada.dev/weblog/learning/">#Learning</a>
+  
+</p>
+
+  </main>
+  <footer></footer>
+
+  
+<div class="eyes-container" id="eyesContainer"></div>
+
+
+<label class="predator-toggle" for="keepAwayPredators">
+  <input type="checkbox" id="keepAwayPredators" onchange="window.handlePredatorToggle(this)">
+  Keep away predators
+</label>
+
+<script>
+(function() {
+  const eyeTypes = ['cat-eye', 'predator-eye'];
+  const container = document.getElementById('eyesContainer');
+  const toggleCheckbox = document.getElementById('keepAwayPredators');
+  let eyes = [];
+  let lastScrollY = window.scrollY;
+  let lastEyeAddTime = 0;
+  let eyesEnabled = true;
+  
+  function updateContainerHeight() {
+    
+    const docHeight = Math.max(
+      document.body.scrollHeight, 
+      document.body.offsetHeight, 
+      document.documentElement.clientHeight, 
+      document.documentElement.scrollHeight, 
+      document.documentElement.offsetHeight
+    );
+    container.style.height = docHeight + 'px';
+  }
+  
+  function createEyePairWithType(yPosition = null, forceType = null) {
+    const eyeType = forceType || eyeTypes[Math.floor(Math.random() * eyeTypes.length)];
+    return createEyePair(yPosition, eyeType);
+  }
+  
+  function checkCollision(x, y, existingEyes) {
+    const minDistance = 80; 
+    
+    for (let eye of existingEyes) {
+      const eyeX = parseInt(eye.style.left);
+      const eyeY = parseInt(eye.style.top);
+      const distance = Math.sqrt(Math.pow(x - eyeX, 2) + Math.pow(y - eyeY, 2));
+      
+      if (distance < minDistance) {
+        return true; 
+      }
+    }
+    return false;
+  }
+
+  function createEyePair(yPosition = null, eyeType = null) {
+    
+    const contentWidth = Math.min(720, window.innerWidth - 40);
+    const sideMargin = (window.innerWidth - contentWidth) / 2;
+    
+    
+    if (sideMargin < 60) return [];
+    
+    const isLeft = Math.random() < 0.5;
+    const finalEyeType = eyeType || eyeTypes[Math.floor(Math.random() * eyeTypes.length)];
+    
+    
+    const y = yPosition !== null 
+      ? yPosition 
+      : Math.random() * window.innerHeight;
+    
+    
+    let baseX, attempts = 0;
+    do {
+      baseX = isLeft 
+        ? Math.random() * (sideMargin - 60) + 10
+        : window.innerWidth - (Math.random() * (sideMargin - 60) + 60);
+      attempts++;
+    } while (checkCollision(baseX, y, eyes) && attempts < 10);
+    
+    
+    if (attempts >= 10) return [];
+    
+    
+    let eyeSpacing = finalEyeType === 'cat-eye' ? 20 : 18;
+    
+    
+    const leftEye = document.createElement('div');
+    const rightEye = document.createElement('div');
+    
+    leftEye.className = `eye ${finalEyeType}`;
+    rightEye.className = `eye ${finalEyeType}`;
+    
+    const topPos = Math.floor(y);
+    const leftPos = Math.floor(baseX);
+    const rightPos = Math.floor(baseX + eyeSpacing);
+    
+    leftEye.style.position = 'absolute';
+    leftEye.style.left = leftPos + 'px';
+    leftEye.style.top = topPos + 'px';
+    leftEye.style.margin = '0';
+    leftEye.style.padding = '0';
+    leftEye.style.border = leftEye.style.border || '0';
+    leftEye.style.display = 'block';
+    
+    rightEye.style.position = 'absolute';
+    rightEye.style.left = rightPos + 'px';
+    rightEye.style.top = topPos + 'px';
+    rightEye.style.margin = '0';
+    rightEye.style.padding = '0';
+    rightEye.style.border = rightEye.style.border || '0';
+    rightEye.style.display = 'block';
+    
+    
+    const blinkDelay = Math.random() * 10000; 
+    const blinkInterval = Math.random() * 5000 + 3000; 
+    
+    setTimeout(() => {
+      leftEye.classList.add('blinking');
+      rightEye.classList.add('blinking');
+      
+      
+      setInterval(() => {
+        
+        leftEye.classList.remove('blinking');
+        rightEye.classList.remove('blinking');
+        
+        setTimeout(() => {
+          leftEye.classList.add('blinking');
+          rightEye.classList.add('blinking');
+        }, 100);
+      }, blinkInterval);
+    }, blinkDelay);
+    
+    container.appendChild(leftEye);
+    container.appendChild(rightEye);
+    
+    setTimeout(() => {
+      leftEye.classList.add('visible');
+      rightEye.classList.add('visible');
+    }, 50);
+    
+    return [leftEye, rightEye];
+  }
+  
+  function removeAllEyes() {
+    
+    eyes.forEach(eye => {
+      if (eye.parentNode) {
+        eye.parentNode.removeChild(eye);
+      }
+    });
+    eyes = [];
+  }
+
+  function addInitialEyes() {
+    
+    if (!eyesEnabled) return;
+    
+    updateContainerHeight();
+    
+    
+    const numPairs = 3;
+    const usedTypes = [];
+    
+    for (let i = 0; i < numPairs; i++) {
+      
+      let eyeType;
+      do {
+        eyeType = eyeTypes[Math.floor(Math.random() * eyeTypes.length)];
+      } while (usedTypes.length > 0 && usedTypes[usedTypes.length - 1] === eyeType && usedTypes.length < eyeTypes.length);
+      
+      usedTypes.push(eyeType);
+      
+      
+      const y = (window.innerHeight / (numPairs + 1)) * (i + 1);
+      const eyePair = createEyePairWithType(y, eyeType);
+      if (eyePair.length === 2) {
+        eyes.push(...eyePair);
+      }
+    }
+  }
+  
+  function addSingleEyePair() {
+    
+    if (!eyesEnabled) return;
+    
+    const currentScrollY = window.scrollY;
+    
+    
+    const y = currentScrollY + Math.random() * window.innerHeight;
+    const eyePair = createEyePair(y);
+    if (eyePair.length === 2) {
+      eyes.push(...eyePair);
+    }
+    
+    
+    updateContainerHeight();
+  }
+
+  function addScrollEyes() {
+    const currentTime = Date.now();
+    
+    
+    if (currentTime - lastEyeAddTime < 1200) return;
+    
+    lastEyeAddTime = currentTime;
+    
+    
+    addSingleEyePair();
+  }
+  
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+    
+    
+    if (scrollDelta > 50) {
+      addScrollEyes();
+    }
+    
+    lastScrollY = currentScrollY;
+  }
+  
+  function handleResize() {
+    updateContainerHeight();
+    
+    
+    eyes.forEach(eye => {
+      const contentWidth = Math.min(720, window.innerWidth - 40);
+      const sideMargin = (window.innerWidth - contentWidth) / 2;
+      
+      if (sideMargin < 50) {
+        eye.style.display = 'none';
+      } else {
+        eye.style.display = 'block';
+      }
+    });
+  }
+  
+  
+  function handleToggleChange(checkbox) {
+    eyesEnabled = !checkbox.checked;
+    
+    
+    localStorage.setItem('keepAwayPredators', checkbox.checked.toString());
+    
+    if (checkbox.checked) {
+      
+      removeAllEyes();
+    } else {
+      
+      setTimeout(addInitialEyes, 100);
+    }
+  }
+
+  
+  function initializeToggleState() {
+    const savedState = localStorage.getItem('keepAwayPredators');
+    const checkbox = document.getElementById('keepAwayPredators');
+    
+    if (savedState !== null && checkbox) {
+      const isChecked = savedState === 'true';
+      checkbox.checked = isChecked;
+      eyesEnabled = !isChecked;
+    }
+  }
+
+  
+  window.handlePredatorToggle = handleToggleChange;
+
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', handleResize);
+  
+  
+  function initializeEyes() {
+    
+    if (eyesEnabled) {
+      setTimeout(addInitialEyes, 100);
+    }
+  }
+  
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeToggleState();
+      initializeEyes();
+    });
+  } else {
+    initializeToggleState();
+    initializeEyes();
+  }
+})();
+</script></body>
+
+</html>
