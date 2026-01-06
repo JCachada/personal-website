@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2022, João Cachada.</copyright>
-    <lastBuildDate>Fri, 14 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jcachada.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025 Book Recommendation List</title>
+      <link>https://jcachada.dev/weblog/2025-reading-list/</link>
+      <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://jcachada.dev/weblog/2025-reading-list/</guid>
+      <description>Please note: These are my thoughts on the books at the time that I read them and wrote about it. My opinions change with time, with experience, etc. These are not gospel on what I think of a book - they are snapshots of a particular time.&#xA;The list Note: Collage made with https://sudwald.github.io/bookcollage/. Thank you to Sammy for the great tool.&#xA;The image is not ordered by any particular rating system.</description>
+    </item>
     <item>
       <title>Building a Complete Android App &#43; Backend With Claude</title>
       <link>https://jcachada.dev/weblog/building-a-full-stack-app-with-claude/</link>
